@@ -9,13 +9,17 @@ import (
 
 type Server struct {
 	router      *gin.Engine
-	Controllers controllers.IController
-	Queries     queries.Queries
+	Controllers controllers.IControllers
+	Queries     queries.IQueries
 }
 
 func InitServer() (*Server, error) {
-
-	server := &Server{}
+	controller := controllers.NewControllers()
+	queries := queries.NewQueries()
+	server := &Server{
+		Controllers: controller,
+		Queries:     queries,
+	}
 	server.InitRouter()
 	return server, nil
 }

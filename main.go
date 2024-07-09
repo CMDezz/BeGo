@@ -5,6 +5,7 @@ import (
 	"BeGo/infras/config"
 	"BeGo/infras/connection"
 	"BeGo/infras/logger"
+	apis "BeGo/infras/router"
 	"database/sql"
 	"fmt"
 	"log"
@@ -55,7 +56,12 @@ func main() {
 	}
 
 	//Init web apis
+	server, err := apis.InitServer()
+	if err != nil {
+		log.Fatal("Internal server error: Cannot start server")
+	}
 
 	//BEGIN THE APP - GLHF!
+	server.Start()
 
 }

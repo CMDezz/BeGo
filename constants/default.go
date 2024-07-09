@@ -7,7 +7,7 @@ const (
 )
 
 const (
-	ENV_FILE_PATH         = "./app.env"
+	ENV_FILE_PATH         = "."
 	LOG_FILE_PATH         = "./log"
 	MIGRATION_FOLDER_PATH = "./dto/migrations"
 )
