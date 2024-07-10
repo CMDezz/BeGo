@@ -14,7 +14,6 @@ const (
 	ENV_FILE_PATH         = "."
 	LOG_FILE_PATH         = "./log"
 	MIGRATION_FOLDER_PATH = "file://dto/migrations"
-	// MIGRATION_FOLDER_PATH = "./dto/migrations"
 )
 
 const (
