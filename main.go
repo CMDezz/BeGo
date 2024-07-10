@@ -12,6 +12,7 @@ import (
 
 	"github.com/golang-migrate/migrate/v4"
 	_ "github.com/golang-migrate/migrate/v4/database/postgres"
+	_ "github.com/golang-migrate/migrate/v4/source/file"
 	_ "github.com/golang-migrate/migrate/v4/source/github"
 	"github.com/jmoiron/sqlx"
 )
@@ -56,7 +57,7 @@ func main() {
 	}
 
 	//Init web apis
-	server, err := apis.InitServer()
+	server, err := apis.InitServer(sqlxContext)
 	if err != nil {
 		log.Fatal("Internal server error: Cannot start server")
 	}

@@ -1,14 +1,17 @@
 package controllers
 
-import "github.com/gin-gonic/gin"
+import "BeGo/infras/router/queries"
 
 type Controllers struct {
+	Queries queries.IQueries
 }
 
 type IControllers interface {
-	GetTestData(ctx *gin.Context)
+	IPostControllers
+	IUserControllers
 }
 
-func NewControllers() IControllers {
-	return &Controllers{}
+func NewControllers(q queries.IQueries) IControllers {
+
+	return &Controllers{Queries: q}
 }

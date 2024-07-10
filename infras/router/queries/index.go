@@ -2,12 +2,15 @@ package queries
 
 import "github.com/jmoiron/sqlx"
 
-type Queries struct{}
-
-type IQueries interface {
-	QueriesTestData(db *sqlx.DB)
+type Queries struct {
+	db *sqlx.DB
 }
 
-func NewQueries() IQueries {
-	return &Queries{}
+type IQueries interface {
+	IPostQueries
+	IUserQueries
+}
+
+func NewQueries(db *sqlx.DB) IQueries {
+	return &Queries{db: db}
 }
