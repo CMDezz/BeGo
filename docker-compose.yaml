@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:16-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=BeGo
+    # volumes:
+    #   - data-volume:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_SOURCE=postgresql://root:secret@postgres:5432/BeGo?sslmode=disable
+    depends_on:
+      - postgres
+    # Adjust the entrypoint and command according to your needs
+    entrypoint: ["/app/wait-for.sh","postgres:5432","--","/app/start.sh"]
+    command: ["/app/main"]
