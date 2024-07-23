@@ -35,9 +35,9 @@
 ```
 
 ## This has not been completed yet, there are few features need TODO:
-- **Update dockerfile, docker-compose,start,sh**
-- **Gin Middlewares**
-- **Gin Authentication, Token,...**
-- **Spliting services for microServices**
-- **Redis**
-- **Authorization..**
+- [x]~~**Update dockerfile, docker-compose**~~
+- [ ]**Gin Middlewares**
+- [ ]**Gin Authentication, Token,...**
+- [ ]**Spliting services for microServices**
+- [ ]**Redis**
+- [ ]**Authorization..**

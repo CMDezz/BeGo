@@ -21,6 +21,13 @@ services:
       - DB_SOURCE=postgresql://root:secret@postgres:5432/BeGo?sslmode=disable
     depends_on:
       - postgres
-    # Adjust the entrypoint and command according to your needs
-    entrypoint: ["/app/wait-for.sh","postgres:5432","--","/app/start.sh"]
+    # develop:
+    #   watch:
+    #     - action: rebuild
+    #       path: infras
+    #       target: /app/infras
+    #       ignore:
+    #         - dto/
+            
     command: ["/app/main"]
+    entrypoint: ["/app/wait-for.sh","postgres:5432","--","/app/start.sh"]

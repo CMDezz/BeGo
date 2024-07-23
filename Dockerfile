@@ -4,16 +4,18 @@ WORKDIR /app
 COPY . .
 RUN go build -o main main.go
 # RUN apk add curl
+RUN apk add --no-cache curl \
+    && apk add --no-cache bash
 
 # Final stage
 FROM alpine
 WORKDIR /app
 COPY --from=builder /app/main .
 COPY app.env .
-COPY start.sh .
 COPY wait-for.sh .
-RUN chmod +x start.sh
+COPY start.sh .
 RUN chmod +x wait-for.sh
+RUN chmod +x start.sh
 COPY dto/migrations ./dto/migrations
 # Expose port 8080 (if not already done in Dockerfile)
 EXPOSE 8080
